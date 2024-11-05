@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/cardview_light_background"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@drawable/border_shape">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/fangzhengzhunyuan"
+                android:textSize="25sp"
+                android:layout_margin="16dp"
+                android:text="@string/exercise"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/fangzhengzhunyuan"
+                android:textSize="20sp"
+                android:layout_margin="16dp"
+                android:text="@string/difficulty_selection"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_margin="4dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/fangzhengzhunyuan"
+                    android:textSize="20sp"
+                    android:text="@string/difficulty_range"/>
+                <TextView
+                    android:layout_margin="4dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/fangzhengzhunyuan"
+                    android:textSize="20sp"
+                    android:text="@string/difficulty_selection_1"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_margin="4dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/fangzhengzhunyuan"
+                    android:textSize="20sp"
+                    android:text="@string/question_amounts"/>
+                <TextView
+                    android:layout_margin="4dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/fangzhengzhunyuan"
+                    android:textSize="20sp"
+                    android:text="@string/question_amounts_default"/>
+            </LinearLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+                <ImageButton
+                    android:id="@+id/start_exercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/leo_study_view_back_btn"
+                    android:background="@null"
+                    android:layout_margin="16dp"
+                    android:layout_gravity="center_horizontal"/>
+            </FrameLayout>
+
+
+        </LinearLayout>
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_margin="16dp"
+
+        android:background="@drawable/bg_game_pk_entry"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/fangzhengzhunyuan"
+                android:text="口算大挑战"
+                android:textColor="@color/exo_black_opacity_70"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/fangzhengzhunyuan"
+                android:gravity="end"
+                android:text="1141.5万名同学已加入"
+                android:textColor="@color/exo_black_opacity_70"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/fangzhengzhunyuan"
+            android:gravity="center_horizontal"
+            android:text="30题竞速"
+            android:textColor="@color/call_notification_decline_color"
+            android:textSize="30sp" />
+
+        <ImageButton
+            android:id="@+id/start_30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@null"
+            android:contentDescription="goto_game"
+            android:src="@drawable/icon_goto_game_pk" />
+
+
+    </LinearLayout>
+    <FrameLayout
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/border_shape">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="16dp">
+            <ImageView
+                android:scaleType="centerCrop"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/study_group_transition_chinese_1"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:fontFamily="@font/fangzhengzhunyuan"
+                    android:gravity="center_horizontal"
+                    android:text="11月挑战"
+                    android:textColor="@color/call_notification_decline_color"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:fontFamily="@font/fangzhengzhunyuan"
+                    android:gravity="center_horizontal"
+                    android:text="完成练习1/31天"
+                    android:textColor="@color/call_notification_decline_color"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+
+
+</LinearLayout>

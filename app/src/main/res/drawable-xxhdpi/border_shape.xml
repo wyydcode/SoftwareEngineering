@@ -1,0 +1,6 @@
+<!-- border_shape.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF" /> <!-- 内部填充为白色 -->
+    <stroke android:width="1dp" android:color="#E0E0E0" /> <!-- 1dp的淡灰色边框 -->
+    <corners android:radius="16dp" /> <!-- 可选的圆角半径 -->
+</shape>

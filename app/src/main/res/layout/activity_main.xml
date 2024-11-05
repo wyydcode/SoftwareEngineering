@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- HeaderBarView 标题栏 -->
+    <com.example.softwareengineering.UI.screen.HeaderBarView
+        android:id="@+id/layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="#fff5e1"
+        app:headerCenterTextSize="14dp"
+        app:headerCenterTextColor="#fff"
+        app:headerCenterTitle="旅行足迹"
+        app:headerCenterTitle2Visibility="gone" />
+
+    <!-- ViewPager 位于 HeaderBarView 之下，RadioGroup 之上 -->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_title"
+        android:layout_above="@id/rg_tab"
+        android:contentDescription="@string/viewpager_description" />
+
+    <!-- RadioGroup 固定在底部 -->
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <RadioButton
+            android:id="@+id/first_fragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/mt_iv_pencil"
+            android:gravity="center"
+            android:text="练习" />
+
+        <RadioButton
+            android:id="@+id/second_fragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/mt_iv_form_listbox"
+            android:gravity="center"
+            android:text="教材资料" />
+
+        <RadioButton
+            android:id="@+id/third_fragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/ml_iv_thumbnail"
+            android:gravity="center"
+            android:text="我的" />
+    </RadioGroup>
+
+</RelativeLayout>
