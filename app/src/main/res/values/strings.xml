@@ -18,10 +18,15 @@
     <string name="difficulty_selection_6">六年级</string>
     <string name="difficulty_selection">难度选择</string>
     <string name="question_amounts">题量</string>
-    <string name="question_amounts_default">30道</string>
+    <string name="question_amounts_default">30</string>
     <string name="difficulty_range">范围</string>
     <string name="image_desc">教材</string>
     <string name="exercise">口算练习</string>
+    <string-array name="difficulty_levels">
+        <item>一年级</item>
+        <item>二年级</item>
+        <item>三年级</item>
+    </string-array>
 
 
     <string name="lorem_ipsum">

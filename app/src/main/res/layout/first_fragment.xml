@@ -21,16 +21,55 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/fangzhengzhunyuan"
-                android:textSize="25sp"
-                android:layout_margin="16dp"
-                android:text="@string/exercise"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/fangzhengzhunyuan"
                 android:textSize="20sp"
                 android:layout_margin="16dp"
                 android:text="@string/difficulty_selection"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="4dp"
+                android:gravity="center|center_vertical">
+
+                <!-- 选择加法 -->
+                <CheckBox
+                    android:id="@+id/checkbox_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:fontFamily="@font/fangzhengzhunyuan"
+                    android:textSize="18sp"
+                    android:layout_marginEnd="16dp" />
+
+                <!-- 选择减法 -->
+                <CheckBox
+                    android:id="@+id/checkbox_subtract"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:fontFamily="@font/fangzhengzhunyuan"
+                    android:textSize="18sp"
+                    android:layout_marginEnd="16dp" />
+
+                <!-- 选择乘法 -->
+                <CheckBox
+                    android:id="@+id/checkbox_multiply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="×"
+                    android:fontFamily="@font/fangzhengzhunyuan"
+                    android:textSize="18sp"
+                    android:layout_marginEnd="16dp" />
+
+                <!-- 选择除法 -->
+                <CheckBox
+                    android:id="@+id/checkbox_divide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="÷"
+                    android:fontFamily="@font/fangzhengzhunyuan"
+                    android:textSize="18sp" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,15 +82,14 @@
                     android:fontFamily="@font/fangzhengzhunyuan"
                     android:textSize="20sp"
                     android:text="@string/difficulty_range"/>
-                <TextView
+                <Spinner
+                    android:id="@+id/degree_choose_spinner"
                     android:layout_margin="4dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/fangzhengzhunyuan"
-                    android:textSize="20sp"
-                    android:text="@string/difficulty_selection_1"/>
+                    android:layout_weight="1"/>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,15 +102,20 @@
                     android:fontFamily="@font/fangzhengzhunyuan"
                     android:textSize="20sp"
                     android:text="@string/question_amounts"/>
-                <TextView
+                <EditText
+                    android:id="@+id/amount_choose"
                     android:layout_margin="4dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/fangzhengzhunyuan"
-                    android:textSize="20sp"
-                    android:text="@string/question_amounts_default"/>
+                    android:inputType="number"
+                    android:background="@android:color/transparent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/question_amounts_default"/>
             </LinearLayout>
+
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -133,7 +176,7 @@
             android:layout_margin="16dp"
             android:fontFamily="@font/fangzhengzhunyuan"
             android:gravity="center_horizontal"
-            android:text="30题竞速"
+            android:text="口算挑战"
             android:textColor="@color/call_notification_decline_color"
             android:textSize="30sp" />
 

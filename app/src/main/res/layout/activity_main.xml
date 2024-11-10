@@ -10,10 +10,10 @@
         android:id="@+id/layout_title"
         android:layout_width="match_parent"
         android:layout_height="62dp"
-        android:background="#fff5e1"
+        android:background="#fffff0"
         app:headerCenterTextSize="14dp"
-        app:headerCenterTextColor="#fff"
-        app:headerCenterTitle="旅行足迹"
+        app:headerCenterTextColor="#000000"
+        app:headerCenterTitle="口算练习"
         app:headerCenterTitle2Visibility="gone" />
 
     <!-- ViewPager 位于 HeaderBarView 之下，RadioGroup 之上 -->
@@ -43,16 +43,6 @@
             android:drawableTop="@drawable/mt_iv_pencil"
             android:gravity="center"
             android:text="练习" />
-
-        <RadioButton
-            android:id="@+id/second_fragment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/mt_iv_form_listbox"
-            android:gravity="center"
-            android:text="教材资料" />
 
         <RadioButton
             android:id="@+id/third_fragment"
