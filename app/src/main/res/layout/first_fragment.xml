@@ -116,19 +116,7 @@
             </LinearLayout>
 
 
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal">
-                <ImageButton
-                    android:id="@+id/start_exercise"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/leo_study_view_back_btn"
-                    android:background="@null"
-                    android:layout_margin="16dp"
-                    android:layout_gravity="center_horizontal"/>
-            </FrameLayout>
+
 
 
         </LinearLayout>

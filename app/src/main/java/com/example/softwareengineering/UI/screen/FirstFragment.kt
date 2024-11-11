@@ -28,7 +28,6 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val start30: ImageButton = view.findViewById(R.id.start_30) // 30题挑战按钮
-        val startExercise: ImageButton = view.findViewById(R.id.start_exercise) // 正常口算练习按钮
         val degreeSpinner: Spinner = view.findViewById(R.id.degree_choose_spinner)
         val amountChoose: TextView = view.findViewById(R.id.amount_choose)
 
@@ -78,9 +77,6 @@ class FirstFragment : Fragment() {
             startActivity(intent)
         }
 
-        startExercise.setOnClickListener {
-
-        }
     }
     private fun convertDegreeToInt(degreeText: String): Int {
         return when (degreeText) {

@@ -10,9 +10,9 @@
         android:id="@+id/layout_title"
         android:layout_width="match_parent"
         android:layout_height="62dp"
-        android:background="#fffff0"
+        android:background="#388E3C"
         app:headerCenterTextSize="14dp"
-        app:headerCenterTextColor="#000000"
+        app:headerCenterTextColor="#ffffff"
         app:headerCenterTitle="口算练习"
         app:headerCenterTitle2Visibility="gone" />
 
