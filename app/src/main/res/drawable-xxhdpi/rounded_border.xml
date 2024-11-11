@@ -1,0 +1,18 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 阴影层 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#D3D3D3"/> <!-- 阴影颜色，可调整为合适的颜色 -->
+            <corners android:radius="12dp"/> <!-- 圆角半径 -->
+        </shape>
+    </item>
+
+    <!-- 主边框层 -->
+    <item android:top="2dp" android:left="2dp" android:right="2dp" android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/white"/> <!-- 主背景颜色 -->
+            <stroke android:width="2dp" android:color="#FF6200EE"/> <!-- 边框颜色和宽度 -->
+            <corners android:radius="12dp"/> <!-- 圆角半径，与阴影保持一致 -->
+        </shape>
+    </item>
+</layer-list>

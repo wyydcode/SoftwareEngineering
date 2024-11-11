@@ -1,22 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
+    <android.widget.Button
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginVertical="16dp"
         android:id="@+id/math_error"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:background="@null"
-        android:src="@drawable/ic_math_error"/>
+        android:layout_height="wrap_content"
+        android:background="@drawable/chalkboard_button_bg"
+        android:padding="8dp"
+        android:text="错题练习"
+        android:textSize="30sp"
+        android:textColor="#000000" />
+
     <TextView
+        android:id="@+id/error_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="页面3"
-        android:textSize="50sp"
-        android:textColor="#ff0000"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:text="错题数量：0"
+        android:textSize="30sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="16dp"/>
 
+    <!-- Divider line -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#CCCCCC" /> <!-- Light grey color for the divider -->
+
+    <!-- RecyclerView for displaying mistake records -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/error_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp" />
 </LinearLayout>

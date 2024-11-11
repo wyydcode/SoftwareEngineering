@@ -50,9 +50,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
-            android:drawableTop="@drawable/ml_iv_thumbnail"
+            android:drawableTop="@drawable/mt_iv_form_listbox"
             android:gravity="center"
-            android:text="我的" />
+            android:text="错题" />
     </RadioGroup>
 
 </RelativeLayout>

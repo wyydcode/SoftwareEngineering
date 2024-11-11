@@ -1,3 +1,5 @@
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,6 +27,7 @@ class MathErrorViewModel(private val dbHelper: DatabaseHelper) : ViewModel() {
             val mistakeList = dbHelper.getAllMistakes()
             _mistakes.postValue(mistakeList)
             _remainingMistakes.postValue(mistakeList.size)
+            Log.d(TAG, "loadMistakes: ${_remainingMistakes.value}")
         }
     }
 
@@ -35,15 +38,19 @@ class MathErrorViewModel(private val dbHelper: DatabaseHelper) : ViewModel() {
 
         viewModelScope.launch(Dispatchers.IO) {
             if (!question.isCorrect) {
-
+                // 错题处理
             } else {
                 dbHelper.deleteMistake(question)
+                //loadMistakes() // 删除错题后重新加载
             }
         }
     }
 
+    // 获取剩余错题数，推荐直接通过LiveData获取
+    // 不再使用这个方法，改用observe方法来处理
     // 获取剩余错题数
     fun getRemainingMistakes(): Int {
         return _remainingMistakes.value ?: 0
     }
 }
+

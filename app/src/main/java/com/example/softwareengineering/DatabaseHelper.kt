@@ -21,6 +21,7 @@ class DatabaseHelper(context: Context) :
         private const val COLUMN_OPERAND2 = "operand2"
         private const val COLUMN_ANSWER = "answer"
         private const val COLUMN_ERROR_COUNT = "error_count" // 新增错误次数列
+        private const val COLUMN_USER_INPUT = "user_input" // 新增用户输入列
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -30,9 +31,11 @@ class DatabaseHelper(context: Context) :
                 "$COLUMN_OPERAND1 INTEGER, " +
                 "$COLUMN_OPERAND2 INTEGER, " +
                 "$COLUMN_ANSWER INTEGER, " +
-                "$COLUMN_ERROR_COUNT INTEGER DEFAULT 1)") // 默认错误次数为1
+                "$COLUMN_ERROR_COUNT INTEGER DEFAULT 1, " +
+                "$COLUMN_USER_INPUT INTEGER)") // 用户输入列
         db.execSQL(createTable)
     }
+
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
@@ -60,7 +63,7 @@ class DatabaseHelper(context: Context) :
     }
 
 
-    suspend fun insertOrUpdateMistake(question: Question) {
+    suspend fun insertOrUpdateMistake(question: Question, userInput: Int) {
         withContext(Dispatchers.IO) {
             val db = writableDatabase
             val cursor = db.rawQuery(
@@ -68,34 +71,44 @@ class DatabaseHelper(context: Context) :
                         "$COLUMN_OPERATOR = ? AND " +
                         "$COLUMN_OPERAND1 = ? AND " +
                         "$COLUMN_OPERAND2 = ?",
-                arrayOf(question.operator, question.operand1.toString(), question.operand2.toString())
+                arrayOf(
+                    question.operator,
+                    question.operand1.toString(),
+                    question.operand2.toString()
+                )
             )
 
             if (cursor.moveToFirst()) {
                 val errorCountIndex = cursor.getColumnIndex(COLUMN_ERROR_COUNT)
 
-                // 检查列索引是否有效
                 if (errorCountIndex != -1) {
                     val currentCount = cursor.getInt(errorCountIndex)
                     val newCount = currentCount + 1
 
                     db.execSQL(
-                        "UPDATE $TABLE_NAME SET $COLUMN_ERROR_COUNT = ? WHERE " +
+                        "UPDATE $TABLE_NAME SET $COLUMN_ERROR_COUNT = ?, $COLUMN_USER_INPUT = ? WHERE " +
                                 "$COLUMN_OPERATOR = ? AND " +
                                 "$COLUMN_OPERAND1 = ? AND " +
                                 "$COLUMN_OPERAND2 = ? AND " +
                                 "$COLUMN_ANSWER = ?",
-                        arrayOf(newCount, question.operator, question.operand1, question.operand2, question.answer)
+                        arrayOf(
+                            newCount,
+                            userInput,
+                            question.operator,
+                            question.operand1,
+                            question.operand2,
+                            question.answer
+                        )
                     )
                 }
             } else {
-                // 如果没有找到，插入新的错题
                 val values = ContentValues().apply {
                     put(COLUMN_OPERATOR, question.operator)
                     put(COLUMN_OPERAND1, question.operand1)
                     put(COLUMN_OPERAND2, question.operand2)
                     put(COLUMN_ANSWER, question.answer)
-                    put(COLUMN_ERROR_COUNT, 1) // 错误次数初始化为1
+                    put(COLUMN_ERROR_COUNT, 1)
+                    put(COLUMN_USER_INPUT, userInput) // 用户输入初始化
                 }
                 db.insert(TABLE_NAME, null, values)
             }
@@ -105,7 +118,6 @@ class DatabaseHelper(context: Context) :
     }
 
 
-
     fun getAllMistakes(): List<Question> {
         val mistakes = mutableListOf<Question>()
         val db = readableDatabase
@@ -113,21 +125,24 @@ class DatabaseHelper(context: Context) :
 
         if (cursor.moveToFirst()) {
             do {
+                // 获取每个列的索引
                 val operatorIndex = cursor.getColumnIndex(COLUMN_OPERATOR)
                 val operand1Index = cursor.getColumnIndex(COLUMN_OPERAND1)
                 val operand2Index = cursor.getColumnIndex(COLUMN_OPERAND2)
                 val answerIndex = cursor.getColumnIndex(COLUMN_ANSWER)
                 val errorCountIndex = cursor.getColumnIndex(COLUMN_ERROR_COUNT)
+                val userInputIndex = cursor.getColumnIndex(COLUMN_USER_INPUT)
 
-                // 检查列索引是否有效
                 if (operatorIndex != -1 && operand1Index != -1 && operand2Index != -1 &&
-                    answerIndex != -1 && errorCountIndex != -1) {
+                    answerIndex != -1 && errorCountIndex != -1 && userInputIndex != -1
+                ) {
 
                     val operator = cursor.getString(operatorIndex)
                     val operand1 = cursor.getInt(operand1Index)
                     val operand2 = cursor.getInt(operand2Index)
                     val answer = cursor.getInt(answerIndex)
                     val errorCount = cursor.getInt(errorCountIndex)
+                    val userInput = cursor.getInt(userInputIndex)
 
                     mistakes.add(
                         Question(
@@ -137,18 +152,16 @@ class DatabaseHelper(context: Context) :
                             answer,
                             isAnswered = false,
                             isCorrect = false,
+                            userInput = userInput
                         )
                     )
-                } else {
-                    // 处理列索引无效的情况（例如记录日志或抛出异常）
-                    // Log.e("Database Error", "One or more column indices are invalid")
                 }
-
             } while (cursor.moveToNext())
         }
         cursor.close()
         db.close()
         return mistakes
     }
+
 
 }

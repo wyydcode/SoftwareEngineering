@@ -109,8 +109,8 @@ class MathProblemAdapter(
                 if (!question.isCorrect) {
                     // 使用协程插入错题
                     CoroutineScope(Dispatchers.Main).launch {
-                        dbHelper.insertOrUpdateMistake(question)
-                        Log.d(TAG, "onBindViewHolder:${question.operand1} ${question.operator} ${question.operand2} = ${question.answer} ")
+                        dbHelper.insertOrUpdateMistake(question,answer)
+                        //Log.d(TAG, "onBindViewHolder:${question.operand1} ${question.operator} ${question.operand2} = ${question.answer} ")
                     }
                 }
             }
